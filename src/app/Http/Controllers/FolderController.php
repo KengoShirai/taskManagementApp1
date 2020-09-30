@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 
 class FolderController extends Controller
 {
-    public function index()
-    {
+    public function index() {
         $folders = Folder::all();
+        // $folders = Folder::select('id')->get();//カラム指定して取得
 
         return view('folders/index', [
-            'folders' => $folders,
+            'folders' => $folders
         ]);
     }
 }

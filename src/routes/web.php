@@ -12,3 +12,4 @@
 */
 
 Route::get('/folders', 'FolderController@index')->name('folders.index');
+Route::get('/folders/{folder_id}', 'TaskController@index')->name('tasks.index');

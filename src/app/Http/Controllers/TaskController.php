@@ -57,6 +57,23 @@ class TaskController extends Controller
         ]);
     }
 
+    public function delete(int $id, int $task_id) {
+        //タスクデータを取得
+        $task = Task::find($task_id);
+
+        // 削除
+        /*
+        AUTO INCREMENTを初期化する必要はあり？
+        今度、論理削除に変更しようかな
+        */
+        $task->delete();
+
+        // リダイレクト
+        return redirect()->route('tasks.index', [
+            'id' => $id
+            ]);
+    }
+
     public function create(int $id, CreateTask $request) {
 
         $current_folder = Folder::find($id);

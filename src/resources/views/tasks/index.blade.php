@@ -30,7 +30,13 @@
                 </td>
                 <td>{{ $task->formatted_due_date }}</td>
                 <td><a href="{{route('tasks.edit', ['id' => $task->folder_id, 'task_id' => $task->id]) }}">編集</a></td>
-                <td><a href="#">削除</a></td>
+                <td>
+                <form action="{{route('tasks.delete', ['id' => $task->folder_id, 'task_id' => $task->id]) }}" method="post">
+                @csrf
+                @method('DELETE')
+                <input type="submit" value="削除">
+                </form>
+                </td>
                 </tr>
             @endforeach
             </tbody>
